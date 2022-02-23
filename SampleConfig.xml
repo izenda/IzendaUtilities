@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+   <source>
+      <!-- Specify the api credentials -->
+      <credentials userName="" password="" apiUrl="http://localhost:2525/api" />
+      <!-- id is not a guid, but rather the 'Tenant ID' field from the UI. If Tenant ID is BLANK this is System Level-->
+      <tenant id="" />
+      <!-- Specify the reports to copy -->
+      <reports>
+         <report id="4FA0D1D6-C4B5-435E-99D3-8B059724BE7C" />
+      </reports>
+      <!-- Specify the templates to copy -->
+      <templates>
+         <!--	 <template id="51D71279-FCD0-402E-9DE0-AD428D26FEAA"/> -->
+      </templates>
+      <!-- Specify the dashboards to copy -->
+      <dashboards>
+         <!--	<dashboard id="B68574CC-89EC-462F-9ED8-DF2F12FACC58"/>		-->
+      </dashboards>
+   </source>
+   <!-- Specify the destination(s)-->
+   <destinations>
+      <!-- Destination 1, These destinations can be run one at a time or all at once based on the parameters used in the command line-->
+      <destination name="UAT">
+         <!-- Specify the api credentials -->
+         <credentials userName="" password="" apiUrl="http://10.000.4.87:8000/api" />
+         <!-- Specify the tenant(s)-->
+         <tenants>
+            <!-- id is not a guid, but rather the 'Tenant ID' field from the UI. If Tenant ID is BLANK this is System Level-->
+            <tenant id="" overwriteIfAlreadyExist="yes">
+               <!-- Specify the database mappings -->
+               <databaseMappings>
+                  <!-- The database name is the name given to to the connection string in the UI of the applicaiotn -->
+                  <databaseMapping sourceDatabaseName="northwind" sourceSchema="dbo" destinationDatabaseName="northwind" destinationSchema="dbo" />
+                  <!-- <databaseMapping sourceDatabaseName="northwind.100" sourceSchema="northwind" destinationDatabaseName="northwind" destinationSchema="northwind"/> -->
+               </databaseMappings>
+               <!-- Specify the role mappings, this is not required but if you need to map a role like IT from system to IT Department at the tenant locaiton you can do so here-->
+               <roleMappings>
+                  <!-- <roleMapping sourceRole="Accounting" destinationRole="Accounting"/> -->
+                  <!-- <roleMapping sourceRole="IT" destinationRole="IT Department"/> -->
+               </roleMappings>
+            </tenant>
+         </tenants>
+      </destination>
+      <!-- Destination 2, These destinations can be run one at a time or all at once based on the parameters used in the command line-->
+      <destination name="DEV">
+         <!-- Specify the api credentials -->
+         <credentials userName="" password="" apiUrl="http://10.111.4.87:8111/api" />
+         <!-- Specify the tenant(s)-->
+         <tenants>
+            <!-- id is not a guid, but rather the 'Tenant ID' field from the UI. If Tenant ID is BLANK this is System Level-->
+            <tenant id="Tenant01" overwriteIfAlreadyExist="yes">
+               <!-- Specify the database mappings -->
+               <databaseMappings>
+                  <!-- The database name is the name given to to the connection string in the UI of the applicaiotn -->
+                  <databaseMapping sourceDatabaseName="southwind" sourceSchema="dbo2" destinationDatabaseName="northwind" destinationSchema="dbo2" />
+                  <databaseMapping sourceDatabaseName="northwind" sourceSchema="northwind" destinationDatabaseName="northwind" destinationSchema="northwind" />
+               </databaseMappings>
+               <!-- Specify the role mappings, this is not required but if you need to map a role like IT from system to IT Department at the tenant locaiton you can do so here-->
+               <roleMappings>
+                  <!-- <roleMapping sourceRole="Accounting" destinationRole="Accounting"/> -->
+                  <!-- <roleMapping sourceRole="IT" destinationRole="IT Department"/> -->
+               </roleMappings>
+            </tenant>
+         </tenants>
+      </destination>
+   </destinations>
+</mapping>

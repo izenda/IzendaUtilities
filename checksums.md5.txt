@@ -1,0 +1,2 @@
+12ba230482f1e15022b7d9166ce0228a  Izenda.Synergy.RSATool.zip
+7c5b087f46ec07c1498e744a265eeefe  SampleConfig.xml
